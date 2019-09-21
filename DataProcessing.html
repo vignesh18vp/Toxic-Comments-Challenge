@@ -1,0 +1,54 @@
+{% extends "Layout.html" %}
+{% block body %}
+  
+<div>
+  <form action="{{ url_for('DataProcessing') }}" method="POST">
+    <h4>Enter the text : </h4>
+    <table>
+      <tr style="width: 100%">
+        <td style="width: 700px"><textarea name="CommentText" rows="4" cols="80"></textarea></td>
+        <td style="width: 350px; align-content: right"><input type="submit" class="btn btn-primary" value="Preprocess Text"></td>
+      </tr>
+    </table>
+  </form>
+</div>
+<br>
+{% if LemmaText != "" %}
+<div>
+  <table>
+    <tr style="width: 80%">
+      <td style="width:250px">
+         <p style="font-family: verdana; font-weight:normal; font-weight: bold">Original Text :</p>
+      </td>
+      <td style="width:650px">
+         <p style="font-family: verdana;">{{OriginalText}} </p>
+      </td>
+    </tr>
+    <tr style="width: 80%">
+        <td style="width:250px">
+            <p style="font-family: verdana; font-weight:bold"> Step 1 : Removing Symbols</p>
+        </td>
+        <td style="width:650px;">
+            <p style="font-family: verdana;">{{SymbolsText}} </p>
+        </td>
+    </tr>
+    <tr style="width: 80%">
+      <td style="width:250px">
+          <p style="font-family: verdana; font-weight:bold">Step 2 : To Lowercase Text</p>
+      </td>
+      <td style="width:650px;">
+          <p style="font-family: verdana;">{{LowerText}} </p>
+      </td>
+  </tr>
+  <tr style="width: 80%">
+    <td style="width:250px">
+        <p style="font-family: verdana; font-weight:bold">Step 3 : Stemming</p>
+    </td>
+    <td style="width:650px;">
+        <p style="font-family: verdana;">{{LemmaText}} </p>
+    </td>
+</tr>
+  </table>
+</div>
+{% endif %}
+{% endblock %}

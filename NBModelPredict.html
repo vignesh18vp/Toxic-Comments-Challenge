@@ -1,0 +1,77 @@
+{% extends "Layout.html" %}
+{% block body %}
+
+<div>
+  <form action="{{ url_for('NBModelPredict') }}" method="POST">
+    <h4>Enter the text : </h4>
+    <table>
+      <tr style="width: 100%">
+        <td style="width: 650px"><textarea name="CommentText" rows="4" cols="80"></textarea></td>
+        <td style="width: 350px; align-content: right"><input type="submit" class="btn btn-primary" value="submit"></td>
+      </tr>
+    </table>
+  </form>
+</div>
+<br>
+<br>
+{% if Error != "" %}
+<h4 style="color: red">{{Error}}</h4>
+{% endif %}
+<br>
+<div>
+  <table>
+    <tr style="width: 80%">
+      <td style="width:200px">
+          {% if ProcessedText != "" %} <p style="font-family: verdana; font-weight:bold">Original Comment :</p>{% endif %}
+      </td>
+      <td style="width:650px">
+          {% if ProcessedText != "" %} <p style="font-family: verdana;">{{OriginalText}} </p> {% endif %}
+      </td>
+    </tr>
+    <tr style="width: 80%">
+        <td style="width:200px">
+            {% if ProcessedText != "" %} <p style="font-family: verdana; font-weight:bold">Processed Comment :</p>{% endif %}
+        </td>
+        <td style="width:650px;">
+            {% if ProcessedText != "" %} <p style="font-family: verdana;">{{ProcessedText}} </p> {% endif %}
+        </td>
+      </tr>
+  </table>
+</div>
+<div>
+    {% if output|length > 0 %}
+    <table>
+        <tr>
+          <td style="width:200px"><p style="font-family: verdana; font-weight:bold">Result :</p></td>
+          <td style="width:650px;">              
+                {% for item in output %}               
+                    {% if item.split(':')[0] == "Clean Comment" %}     
+                       <span class="label label-success">{{item.split(':')[0]}}</span>    
+                    {% else %}
+                       <span class="label label-danger">{{item.split(':')[0]}}</span>    
+                    {%endif%}                        
+                {%endfor%}               
+          </td>
+        </tr>            
+    </table> 
+    {%endif%} 
+</div>
+<br>
+<div>
+    {% if detailedOutput|length > 0 %}
+    <p style="font-family: verdana; font-weight:bold;"><u>Detailed Result</u></p>
+    <table style="width: 900px">
+      <tr style="width:900px">
+          {% for item in detailedOutput %}                    
+            <th class="thResult"> {{item.split(':')[0]}} </th>                           
+          {%endfor%}
+      </tr>
+      <tr style="width: 900px">
+          {% for item in detailedOutput %}                    
+            <td class="tdResult"> {{item.split(':')[1]}} </td>                           
+          {%endfor%}
+      </tr>
+    </table>
+    {% endif %}
+</div>
+ {% endblock %}

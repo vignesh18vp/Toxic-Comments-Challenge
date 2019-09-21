@@ -1,0 +1,43 @@
+{% extends "Layout.html" %}
+{% block body %}
+
+<div class="smallbox"> 
+  Total Records in the data set: {{ TotalRec }}  
+</div>    
+<div class="smallbox"> 
+   <p style="color:limegreen">Total no. of clean Comments : {{CleanRecords}}</p> &nbsp;&nbsp; <p style="color: red">Total no. of wrong Comments : {{TotalRec - CleanRecords}}</p>
+</div> 
+
+<div>
+    <form action="{{ url_for('CommentsRetrieve') }}" method="POST">
+      <table>
+        <tr>
+          <td style="width:200px"><h5><b><u>Comments Dataset</u></b></h5></td>
+          <td style="width:270px"></td>
+          <td><input type="submit" name="CommentBtnClick" class="button" value="Toxic" ></td>    
+          <td style="width:5px"></td>
+          <td><input type="submit" name="CommentBtnClick" class="button" value="Severe Toxic"></td> 
+          <td style="width:5px"></td>
+          <td><input type="submit" name="CommentBtnClick" class="button" value="Obscene"></td> 
+          <td style="width:5px"></td>
+          <td><input type="submit" name="CommentBtnClick" class="button" value="Threat"></td> 
+          <td style="width:5px"></td>
+          <td><input type="submit" name="CommentBtnClick" class="button" value="Insult"></td> 
+          <td style="width:5px"></td>
+          <td><input type="submit" name="CommentBtnClick" class="button" value="Identity Hate"></td>      
+        </tr>
+      </table>
+    </form>
+</div>
+
+<div style="overflow-y: scroll; height:200px; width:100%">   
+    {{ OriginalDataset|safe }}
+</div>
+
+<div>
+    <h5><b><u>Dataset Analysis</u></b></h5>
+    {{ AnalysisData|safe }}
+</div>
+      
+
+{% endblock %}

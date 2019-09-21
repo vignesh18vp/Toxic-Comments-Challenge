@@ -1,0 +1,61 @@
+.box{
+	height:70px;
+	width:100%;
+	background:slateblue;
+	display:flex;
+	align-items: center;
+	justify-content:center;
+	font-family:Verdana;
+	font-size:xx-large;
+	font-weight: bold;
+	color:white
+  }
+  .boxframe{
+	height:600px;
+	width:100%;	
+  }
+
+  .smallbox{
+	height:30px;
+	width:100%;
+	background:rgb(228, 228, 240);
+	display:flex;
+	align-items: center;
+	justify-content:center;
+	font-family:Verdana;
+	font-size:medium;
+	font-weight: bold;
+  }
+
+  .microbox{
+	height:15px;
+	width:100%;
+	background:rgb(228, 228, 240);
+	display:flex;
+	align-items: center;
+	justify-content:center;
+	font-family:Verdana;
+	font-size:medium;
+	font-weight: bold;
+  }
+
+  .button{
+	width:120px;background-color:whitesmoke;color:blue;font-weight: bold
+  }
+
+  .tdResult {
+	border-bottom: 1px solid #ddd;
+	width: 200px;
+	height: 30px;
+	text-align: center;
+	vertical-align: middle;
+  }
+
+  .thResult {
+	background-color: #4CAF50;
+	color: white;
+	width:200px;
+	height: 30px;
+	text-align: center;
+	vertical-align: middle;
+  }

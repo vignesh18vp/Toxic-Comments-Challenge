@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Toxic Comment Challenge</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css"/>	
+	<!--<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>-->
+ 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="box"> 
+		Toxic comments Challenge
+	</div>
+	<div style="height: 5px"></div>
+	
+	<div class="container">
+			<ul class="nav nav-tabs">
+              <li {% if (tabIndicator == "HomePage") %}class="active"{% endif %}><a href="{{ url_for('Index') }}">Home</a></li>
+              <li {% if (tabIndicator == "DAPage") %}class="active"{% endif %}><a href="{{ url_for('DataAnalysis') }}">Data Analysis</a></li>
+              <!--<li {% if (tabIndicator == "VisPage") %}class="active"{% endif %}><a href="{{ url_for('DataVisualize') }}">Data Visualization</a></li>-->
+              <li {% if (tabIndicator == "PrePage") %}class="active"{% endif %}><a href="{{ url_for('DataProcessing') }}">Data Preprocessing</a></li>
+			  <!--<li {% if (tabIndicator == "NBPage") %}class="active"{% endif %}><a href="{{ url_for('NBModel') }}">Naive Bayes Model</a></li>-->
+			  <li {% if (tabIndicator == "NBPPage") %}class="active"{% endif %}><a href="{{ url_for('NBModelPredict') }}">Naive Bayes Prediction</a></li>
+              <!--<li {% if (tabIndicator == "LSTMPage") %}class="active"{% endif %}><a href="{{ url_for('LSTMModel') }}">LSTM Model</a></li>   
+              <li {% if (tabIndicator == "LSTMPPage") %}class="active"{% endif %}><a href="{{ url_for('LSTMModelPredict') }}">LSTM Prediction</a></li>  -->           
+			</ul>
+			<br>
+			<div>
+                {% block body %}
+				{% endblock %}
+			</div>
+	</div>
+
+</body>
+</html>
